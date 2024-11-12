@@ -19,7 +19,7 @@ public class GamesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetGames([FromQuery] string lang)
+    public async Task<IActionResult> GetGames([FromRoute] string lang)
     {
         _languageService.SetLanguage(lang);
         var games = await _context.Games.ToListAsync();
@@ -27,7 +27,7 @@ public class GamesController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateGame([FromQuery] string lang, [FromBody] Game game)
+    public async Task<IActionResult> CreateGame([FromRoute] string lang, [FromBody] Game game)
     {
         _languageService.SetLanguage(lang);
         if (await _context.Games.AnyAsync(g => g.GameID == game.GameID))
@@ -50,7 +50,7 @@ public class GamesController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateGame([FromQuery] string lang, int id, [FromBody] Game game)
+    public async Task<IActionResult> UpdateGame([FromRoute] string lang, int id, [FromBody] Game game)
     {
         _languageService.SetLanguage(lang);
         var gameToUpdate = await _context.Games.FindAsync(id);
@@ -69,7 +69,7 @@ public class GamesController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteGame([FromQuery] string lang, int id)
+    public async Task<IActionResult> DeleteGame([FromRoute] string lang, int id)
     {
         _languageService.SetLanguage(lang);
         var gameToDelete = await _context.Games.FindAsync(id);

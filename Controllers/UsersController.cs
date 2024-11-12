@@ -19,7 +19,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetUsers([FromQuery] string lang)
+    public async Task<IActionResult> GetUsers([FromRoute] string lang)
     {
         _languageService.SetLanguage(lang);
         var users = await _context.Users.ToListAsync();
@@ -27,7 +27,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateUser([FromQuery] string lang, [FromBody] User user)
+    public async Task<IActionResult> CreateUser([FromRoute] string lang, [FromBody] User user)
     {
         _languageService.SetLanguage(lang);
         if (await _context.Users.AnyAsync(u => u.Email == user.Email))
@@ -45,7 +45,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateUser([FromQuery] string lang, int id, [FromBody] User user)
+    public async Task<IActionResult> UpdateUser([FromRoute] string lang, int id, [FromBody] User user)
     {
         _languageService.SetLanguage(lang);
         var userToUpdate = await _context.Users.FindAsync(id);
@@ -60,7 +60,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteUser([FromQuery] string lang, int id)
+    public async Task<IActionResult> DeleteUser([FromRoute] string lang, int id)
     {
         _languageService.SetLanguage(lang);
         var userToDelete = await _context.Users.FindAsync(id);

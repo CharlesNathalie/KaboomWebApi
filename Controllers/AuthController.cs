@@ -28,7 +28,7 @@ namespace KaboomWebApi.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromQuery] string lang, [FromBody] User user)
+        public async Task<IActionResult> Register([FromRoute] string lang, [FromBody] User user)
         {
             _languageService.SetLanguage(lang);
 
@@ -62,7 +62,7 @@ namespace KaboomWebApi.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromQuery] string lang, [FromBody] User user)
+        public async Task<IActionResult> Login([FromRoute] string lang, [FromBody] User user)
         {
             _languageService.SetLanguage(lang);
 
