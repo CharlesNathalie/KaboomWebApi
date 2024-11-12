@@ -1,0 +1,5 @@
+﻿### Get Weather Forecast
+GET https://localhost:7256/WeatherForecast
+Accept: application/json
+
+###

@@ -1,0 +1,16 @@
+﻿global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.SqlServer;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using System.IdentityModel.Tokens.Jwt;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.IdentityModel.Tokens;
+global using System;
+global using System.Security.Claims;
+global using System.Text;
+global using System.Threading.Tasks;
+global using KaboomWebApi.Models;
+global using Microsoft.AspNetCore.Identity;
+global using KaboomWebApi.Resources;
+global using KaboomWebApi.Services;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
