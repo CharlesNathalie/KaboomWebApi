@@ -100,7 +100,7 @@ namespace KaboomWebApi.Controllers
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
-            var jwtKey = _configuration["Jwt:Key"];
+            var jwtKey = _configuration["Key"];
             if (string.IsNullOrEmpty(jwtKey))
             {
                 return "Err: " + AuthControllerRes.JWTKeyNotConfiguredProperly;
@@ -110,8 +110,8 @@ namespace KaboomWebApi.Controllers
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                _configuration["Jwt:Issuer"],
-                _configuration["Jwt:Issuer"],
+                _configuration["Issuer"],
+                _configuration["Issuer"],
                 claims,
                 expires: DateTime.Now.AddMinutes(30),
                 signingCredentials: creds);
