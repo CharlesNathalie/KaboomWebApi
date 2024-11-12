@@ -11,7 +11,7 @@ public class Program
             .AddJsonFile("appsettings.json")
             .Build();
 
-        // Add services to the container.
+        builder.Services.AddScoped<ILanguageService, LanguageService>();
 
         builder.Services.AddControllers().AddJsonOptions(options =>
         {
